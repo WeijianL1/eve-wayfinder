@@ -1,0 +1,25 @@
+node_modules/
+dist/
+artifacts/
+playwright-report/
+test-results/
+.DS_Store
+*.log
+.env
+.env.*
+!.env.example
+.local-data/
+
+# Local credentials and database exports (including accidental copies outside .local-data)
+*.sqlite
+*.sqlite-*
+*.db
+*.db-*
+*.pem
+*.key
+*.p12
+*.pfx
+*.enc
+client.json
+__pycache__/
+.venv/

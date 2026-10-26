@@ -1,0 +1,5 @@
+// Bounded RAM-only cache for derived results. Concurrent callers share one loader.
+export function createMemoCache({ttl=30000,max=256,now=()=>Date.now()}={}){
+ const entries=new Map();let epoch=0;const stats={hits:0,misses:0,joined:0};
+ return {stats,async get(key,load){const existing=entries.get(key);if(existing&&(existing.pending||existing.expiresAt>now())){entries.delete(key);entries.set(key,existing);stats[existing.pending?'joined':'hits']++;return existing.promise;}if(existing)entries.delete(key);stats.misses++;const generation=epoch,entry={pending:true,expiresAt:0,promise:null};entry.promise=Promise.resolve().then(load).then(value=>{if(epoch===generation&&entries.get(key)===entry){entry.pending=false;entry.expiresAt=now()+ttl;}return value;}).catch(e=>{if(entries.get(key)===entry)entries.delete(key);throw e;});entries.set(key,entry);while(entries.size>max)entries.delete(entries.keys().next().value);return entry.promise;},clear(){epoch++;entries.clear();},get size(){return entries.size;}};
+}

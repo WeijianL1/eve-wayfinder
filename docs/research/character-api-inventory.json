@@ -1,0 +1,1423 @@
+{
+  "retrieved_at": "2026-10-18T07:41:31+00:00",
+  "source": "https://esi.evetech.net/meta/openapi.json",
+  "compatibility_date": "2026-08-18",
+  "spec_sha256": "9a9a0f4af77216300e960cfd2576c9baac085a8170022e40c928c28622d80fc6",
+  "method": "GET-only inventory of character-scoped routes; public specification, no private API calls",
+  "routes": [
+    {
+      "path": "/characters/{character_id}",
+      "summary": "Get character's public information",
+      "description": "Public information about a character",
+      "authorization_alternatives": [],
+      "client_cache_ttl_seconds": 86400,
+      "server_cache_ttl_seconds": 86400,
+      "server_cache_mode": "ttl-based",
+      "top_level_fields_or_array_item_fields": [
+        "achievement_score",
+        "alliance_id",
+        "birthday",
+        "bloodline_id",
+        "character_title_id",
+        "corporation_id",
+        "corporation_title",
+        "description",
+        "faction_id",
+        "gender",
+        "name",
+        "race_id",
+        "security_status"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/access-lists",
+      "summary": "List Access Lists",
+      "description": "Lists all Access Lists the character is Manager or Admin of.",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi-access.read_lists.v1"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 300,
+      "server_cache_ttl_seconds": null,
+      "server_cache_mode": "event-based",
+      "top_level_fields_or_array_item_fields": [
+        "access_lists"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/access-lists/{access_list_id}",
+      "summary": "Get Access List details",
+      "description": "Get the details of an Access List.",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi-access.read_lists.v1"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 300,
+      "server_cache_ttl_seconds": null,
+      "server_cache_mode": "event-based",
+      "top_level_fields_or_array_item_fields": [
+        "description",
+        "id",
+        "membership",
+        "name"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/agents_research",
+      "summary": "Get agents research",
+      "description": "Return a list of agents research information for a character. The formula for finding the current research points with an agent is: currentPoints = remainderPoints + pointsPerDay * days(currentTime - researchStartDate)",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi-characters.read_agents_research.v1"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 3600,
+      "server_cache_ttl_seconds": 3600,
+      "server_cache_mode": "ttl-based",
+      "top_level_fields_or_array_item_fields": [
+        "agent_id",
+        "points_per_day",
+        "remainder_points",
+        "skill_type_id",
+        "started_at"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/assets",
+      "summary": "Get character assets",
+      "description": "Return a list of the characters assets",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi-assets.read_assets.v1"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 3600,
+      "server_cache_ttl_seconds": 3600,
+      "server_cache_mode": "ttl-based",
+      "top_level_fields_or_array_item_fields": [
+        "is_blueprint_copy",
+        "is_singleton",
+        "item_id",
+        "location_flag",
+        "location_id",
+        "location_type",
+        "quantity",
+        "type_id"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/attributes",
+      "summary": "Get character attributes",
+      "description": "Return attributes of a character",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi-skills.read_skills.v1"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 120,
+      "server_cache_ttl_seconds": 120,
+      "server_cache_mode": "ttl-based",
+      "top_level_fields_or_array_item_fields": [
+        "accrued_remap_cooldown_date",
+        "bonus_remaps",
+        "charisma",
+        "intelligence",
+        "last_remap_date",
+        "memory",
+        "perception",
+        "willpower"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/blueprints",
+      "summary": "Get blueprints",
+      "description": "Return a list of blueprints the character owns",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi-characters.read_blueprints.v1"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 3600,
+      "server_cache_ttl_seconds": 3600,
+      "server_cache_mode": "ttl-based",
+      "top_level_fields_or_array_item_fields": [
+        "item_id",
+        "location_flag",
+        "location_id",
+        "material_efficiency",
+        "quantity",
+        "runs",
+        "time_efficiency",
+        "type_id"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/calendar",
+      "summary": "List calendar event summaries",
+      "description": "Get 50 event summaries from the calendar. If no from_event ID is given, the resource will return the next 50 chronological event summaries from now. If a from_event ID is specified, it will return the next 50 chronological event summaries from after that event",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi-calendar.read_calendar_events.v1"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 5,
+      "server_cache_ttl_seconds": 5,
+      "server_cache_mode": "ttl-based",
+      "top_level_fields_or_array_item_fields": [
+        "event_date",
+        "event_id",
+        "event_response",
+        "importance",
+        "title"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/calendar/{event_id}",
+      "summary": "Get an event",
+      "description": "Get all the information for a specific event",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi-calendar.read_calendar_events.v1"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 5,
+      "server_cache_ttl_seconds": 5,
+      "server_cache_mode": "ttl-based",
+      "top_level_fields_or_array_item_fields": [
+        "date",
+        "duration",
+        "event_id",
+        "importance",
+        "owner_id",
+        "owner_name",
+        "owner_type",
+        "response",
+        "text",
+        "title"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/calendar/{event_id}/attendees",
+      "summary": "Get attendees",
+      "description": "Get all invited attendees for a given event",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi-calendar.read_calendar_events.v1"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 600,
+      "server_cache_ttl_seconds": 600,
+      "server_cache_mode": "ttl-based",
+      "top_level_fields_or_array_item_fields": [
+        "character_id",
+        "event_response"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/clones",
+      "summary": "Get clones",
+      "description": "A list of the character's clones",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi-clones.read_clones.v1"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 120,
+      "server_cache_ttl_seconds": 120,
+      "server_cache_mode": "ttl-based",
+      "top_level_fields_or_array_item_fields": [
+        "home_location",
+        "jump_clones",
+        "last_clone_jump_date",
+        "last_station_change_date"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/contacts",
+      "summary": "Get contacts",
+      "description": "Return contacts of a character",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi-characters.read_contacts.v1"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 300,
+      "server_cache_ttl_seconds": 300,
+      "server_cache_mode": "ttl-based",
+      "top_level_fields_or_array_item_fields": [
+        "contact_id",
+        "contact_type",
+        "is_blocked",
+        "is_watched",
+        "label_ids",
+        "standing"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/contacts/labels",
+      "summary": "Get contact labels",
+      "description": "Return custom labels for a character's contacts",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi-characters.read_contacts.v1"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 300,
+      "server_cache_ttl_seconds": 300,
+      "server_cache_mode": "ttl-based",
+      "top_level_fields_or_array_item_fields": [
+        "label_id",
+        "label_name"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/contracts",
+      "summary": "Get contracts",
+      "description": "Returns contracts available to a character, only if the character is issuer, acceptor or assignee. Only returns contracts no older than 30 days, or if the status is \"in_progress\".",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi-contracts.read_character_contracts.v1"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 300,
+      "server_cache_ttl_seconds": 300,
+      "server_cache_mode": "ttl-based",
+      "top_level_fields_or_array_item_fields": [
+        "acceptor_id",
+        "assignee_id",
+        "availability",
+        "buyout",
+        "collateral",
+        "contract_id",
+        "date_accepted",
+        "date_completed",
+        "date_expired",
+        "date_issued",
+        "days_to_complete",
+        "end_location_id",
+        "for_corporation",
+        "issuer_corporation_id",
+        "issuer_id",
+        "price",
+        "reward",
+        "start_location_id",
+        "status",
+        "title",
+        "type",
+        "volume"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/contracts/{contract_id}/bids",
+      "summary": "Get contract bids",
+      "description": "Lists bids on a particular auction contract",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi-contracts.read_character_contracts.v1"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 300,
+      "server_cache_ttl_seconds": 300,
+      "server_cache_mode": "ttl-based",
+      "top_level_fields_or_array_item_fields": [
+        "amount",
+        "bid_id",
+        "bidder_id",
+        "date_bid"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/contracts/{contract_id}/items",
+      "summary": "Get contract items",
+      "description": "Lists items of a particular contract",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi-contracts.read_character_contracts.v1"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 3600,
+      "server_cache_ttl_seconds": 3600,
+      "server_cache_mode": "ttl-based",
+      "top_level_fields_or_array_item_fields": [
+        "is_included",
+        "is_singleton",
+        "quantity",
+        "raw_quantity",
+        "record_id",
+        "type_id"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/corporationhistory",
+      "summary": "Get corporation history",
+      "description": "Get a list of all the corporations a character has been a member of",
+      "authorization_alternatives": [],
+      "client_cache_ttl_seconds": 86400,
+      "server_cache_ttl_seconds": 86400,
+      "server_cache_mode": "ttl-based",
+      "top_level_fields_or_array_item_fields": [
+        "corporation_id",
+        "is_deleted",
+        "record_id",
+        "start_date"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/cosmetics/skinr",
+      "summary": "List a character's owned SKINR licenses",
+      "description": "Listing of all SKINR licenses you own",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi.cosmetic.char:read"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 3600,
+      "server_cache_ttl_seconds": null,
+      "server_cache_mode": "event-based",
+      "top_level_fields_or_array_item_fields": [
+        "licenses"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/cosmetics/skinr/components",
+      "summary": "List a character's owned SKINR component licenses",
+      "description": "Listing of all SKINR component licenses you own",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi.cosmetic.char:read"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 3600,
+      "server_cache_ttl_seconds": null,
+      "server_cache_mode": "event-based",
+      "top_level_fields_or_array_item_fields": [
+        "licenses"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/fatigue",
+      "summary": "Get jump fatigue",
+      "description": "Return a character's jump activation and fatigue information",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi-characters.read_fatigue.v1"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 300,
+      "server_cache_ttl_seconds": 300,
+      "server_cache_mode": "ttl-based",
+      "top_level_fields_or_array_item_fields": [
+        "jump_fatigue_expire_date",
+        "last_jump_date",
+        "last_update_date"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/fittings",
+      "summary": "Get fittings",
+      "description": "Return fittings of a character",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi-fittings.read_fittings.v1"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 300,
+      "server_cache_ttl_seconds": 300,
+      "server_cache_mode": "ttl-based",
+      "top_level_fields_or_array_item_fields": [
+        "description",
+        "fitting_id",
+        "items",
+        "name",
+        "ship_type_id"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/fleet",
+      "summary": "Get character fleet info",
+      "description": "Return the fleet ID the character is in, if any.",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi-fleets.read_fleet.v1"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 60,
+      "server_cache_ttl_seconds": 60,
+      "server_cache_mode": "ttl-based",
+      "top_level_fields_or_array_item_fields": [
+        "fleet_boss_id",
+        "fleet_id",
+        "role",
+        "squad_id",
+        "wing_id"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/freelance-jobs",
+      "summary": "List character freelance jobs",
+      "description": "Listing of all freelance jobs you are actively participating in.",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi-characters.read_freelance_jobs.v1"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 60,
+      "server_cache_ttl_seconds": null,
+      "server_cache_mode": "event-based",
+      "top_level_fields_or_array_item_fields": [
+        "freelance_jobs"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/freelance-jobs/{job_id}/participation",
+      "summary": "Get character freelance job participation",
+      "description": "Show your participation in a freelance job.",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi-characters.read_freelance_jobs.v1"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 60,
+      "server_cache_ttl_seconds": null,
+      "server_cache_mode": "event-based",
+      "top_level_fields_or_array_item_fields": [
+        "contributed",
+        "last_modified",
+        "state"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/fw/stats",
+      "summary": "Overview of a character involved in faction warfare",
+      "description": "Statistical overview of a character involved in faction warfare\n\nThis route expires daily at 11:05",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi-characters.read_fw_stats.v1"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": null,
+      "server_cache_ttl_seconds": null,
+      "server_cache_mode": null,
+      "top_level_fields_or_array_item_fields": [
+        "current_rank",
+        "enlisted_on",
+        "faction_id",
+        "highest_rank",
+        "kills",
+        "victory_points"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/implants",
+      "summary": "Get active implants",
+      "description": "Return implants on the active clone of a character",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi-clones.read_implants.v1"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 120,
+      "server_cache_ttl_seconds": 120,
+      "server_cache_mode": "ttl-based",
+      "top_level_fields_or_array_item_fields": [],
+      "schema_type": "integer"
+    },
+    {
+      "path": "/characters/{character_id}/industry/jobs",
+      "summary": "List character industry jobs",
+      "description": "List industry jobs placed by a character",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi-industry.read_character_jobs.v1"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 300,
+      "server_cache_ttl_seconds": 300,
+      "server_cache_mode": "ttl-based",
+      "top_level_fields_or_array_item_fields": [
+        "activity_id",
+        "blueprint_id",
+        "blueprint_location_id",
+        "blueprint_type_id",
+        "completed_character_id",
+        "completed_date",
+        "cost",
+        "duration",
+        "end_date",
+        "facility_id",
+        "installer_id",
+        "job_id",
+        "licensed_runs",
+        "output_location_id",
+        "pause_date",
+        "probability",
+        "product_type_id",
+        "runs",
+        "start_date",
+        "station_id",
+        "status",
+        "successful_runs"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/killmails/recent",
+      "summary": "Get a character's recent kills and losses",
+      "description": "Return a list of a character's kills and losses going back 90 days",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi-killmails.read_killmails.v1"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 300,
+      "server_cache_ttl_seconds": 300,
+      "server_cache_mode": "ttl-based",
+      "top_level_fields_or_array_item_fields": [
+        "killmail_hash",
+        "killmail_id"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/location",
+      "summary": "Get character location",
+      "description": "Get the current location of a character, including the station or structure it is docked in.",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi-location.read_location.v1"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 5,
+      "server_cache_ttl_seconds": null,
+      "server_cache_mode": "event-based",
+      "top_level_fields_or_array_item_fields": [
+        "solar_system_id",
+        "station_id",
+        "structure_id"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/loyalty/points",
+      "summary": "Get loyalty points",
+      "description": "Return a list of loyalty points for all corporations the character has worked for",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi-characters.read_loyalty.v1"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 3600,
+      "server_cache_ttl_seconds": 3600,
+      "server_cache_mode": "ttl-based",
+      "top_level_fields_or_array_item_fields": [
+        "corporation_id",
+        "loyalty_points"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/mail",
+      "summary": "Return mail headers",
+      "description": "Return the 50 most recent mail headers belonging to the character that match the query criteria. Queries can be filtered by label, and last_mail_id can be used to paginate backwards",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi-mail.read_mail.v1"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 30,
+      "server_cache_ttl_seconds": 30,
+      "server_cache_mode": "ttl-based",
+      "top_level_fields_or_array_item_fields": [
+        "from",
+        "is_read",
+        "labels",
+        "mail_id",
+        "recipients",
+        "subject",
+        "timestamp"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/mail/labels",
+      "summary": "Get mail labels and unread counts",
+      "description": "Return a list of the users mail labels, unread counts for each label and a total unread count.",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi-mail.read_mail.v1"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 30,
+      "server_cache_ttl_seconds": 30,
+      "server_cache_mode": "ttl-based",
+      "top_level_fields_or_array_item_fields": [
+        "labels",
+        "total_unread_count"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/mail/lists",
+      "summary": "Return mailing list subscriptions",
+      "description": "Return all mailing lists that the character is subscribed to",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi-mail.read_mail.v1"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 120,
+      "server_cache_ttl_seconds": 120,
+      "server_cache_mode": "ttl-based",
+      "top_level_fields_or_array_item_fields": [
+        "mailing_list_id",
+        "name"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/mail/{mail_id}",
+      "summary": "Return a mail",
+      "description": "Return the contents of an EVE mail",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi-mail.read_mail.v1"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 30,
+      "server_cache_ttl_seconds": 30,
+      "server_cache_mode": "ttl-based",
+      "top_level_fields_or_array_item_fields": [
+        "body",
+        "from",
+        "labels",
+        "read",
+        "recipients",
+        "subject",
+        "timestamp"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/medals",
+      "summary": "Get medals",
+      "description": "Return a list of medals the character has",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi-characters.read_medals.v1"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 3600,
+      "server_cache_ttl_seconds": 3600,
+      "server_cache_mode": "ttl-based",
+      "top_level_fields_or_array_item_fields": [
+        "corporation_id",
+        "date",
+        "description",
+        "graphics",
+        "issuer_id",
+        "medal_id",
+        "reason",
+        "status",
+        "title"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/mercenary-tactical-operations",
+      "summary": "List Mercenary Tactical Operations",
+      "description": "Listing of all Mercenary Tactical Operations for the character.",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi-activities.read_character.v1"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 300,
+      "server_cache_ttl_seconds": null,
+      "server_cache_mode": "event-based",
+      "top_level_fields_or_array_item_fields": [
+        "operations"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/mercenary-tactical-operations/{operation_id}",
+      "summary": "Get Mercenary Tactical Operation details",
+      "description": "Get the details of a Mercenary Tactical Operation.",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi-activities.read_character.v1"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 300,
+      "server_cache_ttl_seconds": null,
+      "server_cache_mode": "event-based",
+      "top_level_fields_or_array_item_fields": [
+        "dungeon_type_id",
+        "expires",
+        "id",
+        "mercenary_den_id",
+        "state"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/military-campaigns/objectives",
+      "summary": "List character participation in military campaigns",
+      "description": "Listing of the military campaign objectives the character has participated in.",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi.activity.char:read"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 60,
+      "server_cache_ttl_seconds": null,
+      "server_cache_mode": "event-based",
+      "top_level_fields_or_array_item_fields": [
+        "cursor",
+        "objectives"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/military-campaigns/objectives/{objective_id}",
+      "summary": "Get character military campaign objective participation",
+      "description": "Show your participation in a military campaign objective.",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi.activity.char:read"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 60,
+      "server_cache_ttl_seconds": null,
+      "server_cache_mode": "event-based",
+      "top_level_fields_or_array_item_fields": [
+        "campaign_id",
+        "contributed",
+        "id",
+        "is_committed",
+        "last_modified"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/mining",
+      "summary": "Character mining ledger",
+      "description": "Paginated record of all mining done by a character for the past 30 days",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi-industry.read_character_mining.v1"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 600,
+      "server_cache_ttl_seconds": 600,
+      "server_cache_mode": "ttl-based",
+      "top_level_fields_or_array_item_fields": [
+        "date",
+        "quantity",
+        "solar_system_id",
+        "type_id"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/notifications",
+      "summary": "Get character notifications",
+      "description": "Return character notifications",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi-characters.read_notifications.v1"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 600,
+      "server_cache_ttl_seconds": 600,
+      "server_cache_mode": "ttl-based",
+      "top_level_fields_or_array_item_fields": [
+        "is_read",
+        "notification_id",
+        "sender_id",
+        "sender_type",
+        "text",
+        "timestamp",
+        "type"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/notifications/contacts",
+      "summary": "Get new contact notifications",
+      "description": "Return notifications about having been added to someone's contact list",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi-characters.read_notifications.v1"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 600,
+      "server_cache_ttl_seconds": 600,
+      "server_cache_mode": "ttl-based",
+      "top_level_fields_or_array_item_fields": [
+        "message",
+        "notification_id",
+        "send_date",
+        "sender_character_id",
+        "standing_level"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/online",
+      "summary": "Get character online",
+      "description": "Get whether a character is online, and its login statistics.",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi-location.read_online.v1"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 60,
+      "server_cache_ttl_seconds": null,
+      "server_cache_mode": "event-based",
+      "top_level_fields_or_array_item_fields": [
+        "last_login",
+        "last_logout",
+        "logins",
+        "online"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/orders",
+      "summary": "List open orders from a character",
+      "description": "List open market orders placed by a character",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi-markets.read_character_orders.v1"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 1200,
+      "server_cache_ttl_seconds": 1200,
+      "server_cache_mode": "ttl-based",
+      "top_level_fields_or_array_item_fields": [
+        "duration",
+        "escrow",
+        "is_buy_order",
+        "is_corporation",
+        "issued",
+        "location_id",
+        "min_volume",
+        "order_id",
+        "price",
+        "range",
+        "region_id",
+        "type_id",
+        "volume_remain",
+        "volume_total"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/orders/history",
+      "summary": "List historical orders by a character",
+      "description": "List cancelled and expired market orders placed by a character up to 90 days in the past.",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi-markets.read_character_orders.v1"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 3600,
+      "server_cache_ttl_seconds": 3600,
+      "server_cache_mode": "ttl-based",
+      "top_level_fields_or_array_item_fields": [
+        "duration",
+        "escrow",
+        "is_buy_order",
+        "is_corporation",
+        "issued",
+        "location_id",
+        "min_volume",
+        "order_id",
+        "price",
+        "range",
+        "region_id",
+        "state",
+        "type_id",
+        "volume_remain",
+        "volume_total"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/paragon-hub/skinr",
+      "summary": "List a character's Paragon Hub SKINR listings",
+      "description": "List the SKINR listings a character has posted on the Paragon Hub.",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi.cosmetic.char:read"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": null,
+      "server_cache_ttl_seconds": null,
+      "server_cache_mode": "event-based",
+      "top_level_fields_or_array_item_fields": [
+        "cursor",
+        "listings"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/planets",
+      "summary": "Get colonies",
+      "description": "Returns a list of all planetary colonies owned by a character.",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi-planets.manage_planets.v1"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 600,
+      "server_cache_ttl_seconds": 600,
+      "server_cache_mode": "ttl-based",
+      "top_level_fields_or_array_item_fields": [
+        "last_update",
+        "num_pins",
+        "owner_id",
+        "planet_id",
+        "planet_type",
+        "solar_system_id",
+        "upgrade_level"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/planets/{planet_id}",
+      "summary": "Get colony layout",
+      "description": "Returns full details on the layout of a single planetary colony, including links, pins and routes. Note: Planetary information is only recalculated when the colony is viewed through the client. Information will not update until this criteria is met.",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi-planets.manage_planets.v1"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 600,
+      "server_cache_ttl_seconds": 600,
+      "server_cache_mode": "ttl-based",
+      "top_level_fields_or_array_item_fields": [
+        "links",
+        "pins",
+        "routes"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/portrait",
+      "summary": "Get character portraits",
+      "description": "Get portrait urls for a character\n\nThis route expires daily at 11:05",
+      "authorization_alternatives": [],
+      "client_cache_ttl_seconds": null,
+      "server_cache_ttl_seconds": null,
+      "server_cache_mode": null,
+      "top_level_fields_or_array_item_fields": [
+        "px128x128",
+        "px256x256",
+        "px512x512",
+        "px64x64"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/roles",
+      "summary": "Get character corporation roles",
+      "description": "Returns a character's corporation roles",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi-characters.read_corporation_roles.v1"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 3600,
+      "server_cache_ttl_seconds": 3600,
+      "server_cache_mode": "ttl-based",
+      "top_level_fields_or_array_item_fields": [
+        "roles",
+        "roles_at_base",
+        "roles_at_hq",
+        "roles_at_other"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/search",
+      "summary": "Search on a string",
+      "description": "Search for entities that match a given sub-string.",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi-search.search_structures.v1"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 3600,
+      "server_cache_ttl_seconds": 3600,
+      "server_cache_mode": "ttl-based",
+      "top_level_fields_or_array_item_fields": [
+        "agent",
+        "alliance",
+        "character",
+        "constellation",
+        "corporation",
+        "faction",
+        "inventory_type",
+        "region",
+        "solar_system",
+        "station",
+        "structure"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/ship",
+      "summary": "Get current ship",
+      "description": "Get the ship a character is currently in.",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi-location.read_ship_type.v1"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 5,
+      "server_cache_ttl_seconds": 5,
+      "server_cache_mode": "ttl-based",
+      "top_level_fields_or_array_item_fields": [
+        "ship_item_id",
+        "ship_name",
+        "ship_type_id"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/skillqueue",
+      "summary": "Get character's skill queue",
+      "description": "List the configured skill queue for the given character.\n\nEntries that have their finish time in the past are completed, but aren't updated in the \"/skills\" route\nyet. This will happen the next time the character logs in.",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi-skills.read_skillqueue.v1"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 60,
+      "server_cache_ttl_seconds": null,
+      "server_cache_mode": "event-based",
+      "top_level_fields_or_array_item_fields": [
+        "finish_date",
+        "finished_level",
+        "level_end_sp",
+        "level_start_sp",
+        "queue_position",
+        "skill_id",
+        "start_date",
+        "training_start_sp"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/skills",
+      "summary": "Get character skills",
+      "description": "List all trained skills for the given character.\n\nSkills returned by this route can be out-of-date if the character hasn't logged in since one or more skills\ncompleted training. Use the /skillqueue route to check for skills that completed training. Entries that are\nin the past need to be applied on top of this list to get an accurate view of the character's current skills.",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi-skills.read_skills.v1"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 60,
+      "server_cache_ttl_seconds": null,
+      "server_cache_mode": "event-based",
+      "top_level_fields_or_array_item_fields": [
+        "skills",
+        "total_sp",
+        "unallocated_sp"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/standings",
+      "summary": "Get standings",
+      "description": "Return character standings from agents, NPC corporations, and factions",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi-characters.read_standings.v1"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 3600,
+      "server_cache_ttl_seconds": 3600,
+      "server_cache_mode": "ttl-based",
+      "top_level_fields_or_array_item_fields": [
+        "from_id",
+        "from_type",
+        "standing"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/structures/mercenary-dens",
+      "summary": "List Mercenary Dens",
+      "description": "Listing of all Mercenary Dens.",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi-structures.read_character.v1"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 3600,
+      "server_cache_ttl_seconds": null,
+      "server_cache_mode": "event-based",
+      "top_level_fields_or_array_item_fields": [
+        "mercenary_dens"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/structures/mercenary-dens/{mercenary_den_id}",
+      "summary": "Get Mercenary Den details",
+      "description": "Get the details of a Mercenary Den.",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi-structures.read_character.v1"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 3600,
+      "server_cache_ttl_seconds": null,
+      "server_cache_mode": "event-based",
+      "top_level_fields_or_array_item_fields": [
+        "evolution",
+        "id",
+        "infomorphs",
+        "reinforcement_timer",
+        "skyhook",
+        "state",
+        "type_id"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/titles",
+      "summary": "Get character corporation titles",
+      "description": "Returns a character's titles",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi-characters.read_titles.v1"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 3600,
+      "server_cache_ttl_seconds": 3600,
+      "server_cache_mode": "ttl-based",
+      "top_level_fields_or_array_item_fields": [
+        "name",
+        "title_id"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/wallet",
+      "summary": "Get a character's wallet balance",
+      "description": "Returns a character's wallet balance",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi-wallet.read_character_wallet.v1"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 120,
+      "server_cache_ttl_seconds": 120,
+      "server_cache_mode": "ttl-based",
+      "top_level_fields_or_array_item_fields": [],
+      "schema_type": "number"
+    },
+    {
+      "path": "/characters/{character_id}/wallet/journal",
+      "summary": "Get character wallet journal",
+      "description": "Retrieve the given character's wallet journal going 30 days back",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi-wallet.read_character_wallet.v1"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 3600,
+      "server_cache_ttl_seconds": 3600,
+      "server_cache_mode": "ttl-based",
+      "top_level_fields_or_array_item_fields": [
+        "amount",
+        "balance",
+        "context_id",
+        "context_id_type",
+        "date",
+        "description",
+        "first_party_id",
+        "id",
+        "reason",
+        "ref_type",
+        "second_party_id",
+        "tax",
+        "tax_receiver_id"
+      ],
+      "schema_type": "object"
+    },
+    {
+      "path": "/characters/{character_id}/wallet/transactions",
+      "summary": "Get wallet transactions",
+      "description": "Get wallet transactions of a character",
+      "authorization_alternatives": [
+        {
+          "OAuth2": [
+            "esi-wallet.read_character_wallet.v1"
+          ]
+        }
+      ],
+      "client_cache_ttl_seconds": 3600,
+      "server_cache_ttl_seconds": 3600,
+      "server_cache_mode": "ttl-based",
+      "top_level_fields_or_array_item_fields": [
+        "client_id",
+        "date",
+        "is_buy",
+        "is_personal",
+        "journal_ref_id",
+        "location_id",
+        "quantity",
+        "transaction_id",
+        "type_id",
+        "unit_price"
+      ],
+      "schema_type": "object"
+    }
+  ]
+}
