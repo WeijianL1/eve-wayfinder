@@ -1,4 +1,4 @@
-# EVE Master：低安与 00 活动助手构想
+# EVE Wayfinder：低安与 00 活动助手构想
 
 历史构思，范围已收敛；当前决定以 [最终产品设计](../design.md) 和 [规格](../../.scratch/eve-assistant/spec.md) 为准。
 

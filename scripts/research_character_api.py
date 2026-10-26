@@ -12,7 +12,7 @@ BASE = "https://esi.evetech.net"
 
 
 def fetch(path, compatibility_date=None):
-    headers = {"User-Agent": "eve-master-research/0.1", "Accept": "application/json"}
+    headers = {"User-Agent": "eve-wayfinder-research/0.1", "Accept": "application/json"}
     if compatibility_date:
         headers["X-Compatibility-Date"] = compatibility_date
     with urlopen(Request(BASE + path, headers=headers), timeout=45) as response:

@@ -1,4 +1,6 @@
-# EVE Master · Web App
+# EVE Wayfinder · Web App
+
+为兼容已有数据，内部浏览器存储键、SQLite 文件名和 v1 授权加密标识保留旧名称；不会影响新的产品名称，也无需重新授权或迁移收藏。
 
 EVE 风格的单角色 Gas / Hauling 网页应用。React 前端通过同源 HTTP API 连接 Node 服务，直接在浏览器运行；无需 Electron。默认使用真实 ESI/SSO/zKillboard，独立 `?mode=demo` 保留演示沙盒。
 
@@ -13,7 +15,7 @@ npm ci
 npm start
 ```
 
-打开 **http://127.0.0.1:5173/**。`npm start` 检查 TypeScript、构建前端并启动正式网页服务。macOS 可双击 `Start EVE Master.command` 启动，再打开上述地址。
+打开 **http://127.0.0.1:5173/**。`npm start` 检查 TypeScript、构建前端并启动正式网页服务。macOS 可双击 `Start EVE Wayfinder.command` 启动，再打开上述地址。
 
 开发模式：`npm run dev`，同样提供页面和 API，支持热更新。正式构建完成后可用 `npm run serve` 直接启动；`PORT=5180 npm run serve` 可更换端口。开发与正式服务共用本项目 `.local-data/`，不要同时启动它们占用同一端口。
 
@@ -51,4 +53,4 @@ node scripts/validate-market-catalog.mjs
 
 UI 测试覆盖真实/演示模式、角色缺口、容量/ISK/h、顺路单和浏览器 SSO；默认使用本机 Google Chrome，可用 `CHROME_PATH` 指定，或安装 Playwright Chromium。服务测试覆盖加密凭据重启恢复、API 来源/会话保护、静态页面与文件隔离。测试产物在忽略的 `artifacts/`。
 
-设计见 [docs/design.md](docs/design.md)，接口与计算边界见 [docs/live-data.md](docs/live-data.md)，生产目标见 [.scratch/eve-assistant/spec.md](.scratch/eve-assistant/spec.md)。当前网页实现保存在 `prototype/eve-master` 分支。
+设计见 [docs/design.md](docs/design.md)，接口与计算边界见 [docs/live-data.md](docs/live-data.md)，生产目标见 [.scratch/eve-assistant/spec.md](.scratch/eve-assistant/spec.md)。当前网页实现保存在 `main` 分支。

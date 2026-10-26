@@ -23,7 +23,7 @@ EVE 风格 UI 中，一个没有运输船的新手是否能免填数字走通 Ga
 
 ## Prototype evidence
 
-Primary source branch: `prototype/eve-master`（本地保留，不合并到 main）。
+Current source branch: `main`（历史清理后统一保留当前源码）。
 
 ## Comments
 
@@ -35,4 +35,4 @@ Primary source branch: `prototype/eve-master`（本地保留，不合并到 main
 
 运行：`npm start`，或双击根目录的 macOS 启动文件。全部合成数据，真实账号与生产拟合尚未接入。
 
-证据与限制见 [验证记录](../../../docs/prototype-verification.md)，源码保存在本地 `prototype/eve-master` 分支。
+证据与限制见 [验证记录](../../../docs/prototype-verification.md)，源码保存在本地 `main` 分支。

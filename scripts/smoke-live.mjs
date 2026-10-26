@@ -1,6 +1,6 @@
 // Public-data smoke only. Never prints authorization URLs, tokens, wallet or other private fields.
 import {mkdir,writeFile} from 'node:fs/promises';
-const base=process.env.EVE_MASTER_BASE_URL||'http://127.0.0.1:5173';
+const base=process.env.EVE_WAYFINDER_BASE_URL||process.env.EVE_MASTER_BASE_URL||'http://127.0.0.1:5173';
 if(!['127.0.0.1','localhost'].includes(new URL(base).hostname))throw Error('Smoke requires the local application API.');
 const bootstrap=await(await fetch(base+'/api/bootstrap')).json();
 async function post(endpoint,body){const r=await fetch(base+'/api/'+endpoint,{method:'POST',headers:{'Content-Type':'application/json','X-Eve-Session':bootstrap.session},body:JSON.stringify(body)});const value=await r.json();if(!r.ok)throw Error(value.error||`HTTP ${r.status}`);return value;}

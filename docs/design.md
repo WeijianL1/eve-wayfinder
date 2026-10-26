@@ -1,4 +1,4 @@
-# EVE Master 最终产品设计：Gas 与 Hauling
+# EVE Wayfinder 最终产品设计：Gas 与 Hauling
 
 版本：4；更新：2026-10-18。产品范围与验收边界已确认；本版加入保留 EVE 视觉风格的 UI 约束。这里只定义产品，不表示已经实现或验证盈利。
 

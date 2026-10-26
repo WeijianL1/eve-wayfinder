@@ -1,4 +1,4 @@
-# EVE Master：Gas 与 Hauling 单角色活动助手
+# EVE Wayfinder：Gas 与 Hauling 单角色活动助手
 
 Status: ready-for-agent
 Version: 5

@@ -1,5 +1,6 @@
 import {useEffect,useRef,useState} from 'react';
 import {createAlarmTracker,type AlarmPlayer} from './risk-alarm';
+// Persisted before the Wayfinder rebrand; preserve the user's mute preference.
 const key='eve-master:local:alarm-enabled';
 export function useRiskAlarm(players:AlarmPlayer[]){
  const [enabled,setEnabled]=useState(()=>{try{return localStorage.getItem(key)!=='false';}catch{return true;}}),[ready,setReady]=useState(false),[message,setMessage]=useState(''),[audioError,setAudioError]=useState('');

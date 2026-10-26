@@ -23,7 +23,7 @@ export async function createWebServer({distDir=path.join(root,'dist'),dataDir=pa
 export async function startWebServer(){
  const port=Number(process.env.PORT||5173);if(!Number.isInteger(port)||port<1||port>65535)throw Error('Invalid PORT');
  const runtime=await createWebServer();await new Promise((resolve,reject)=>{runtime.server.once('error',reject);runtime.server.listen(port,'127.0.0.1',resolve);});
- console.log(`EVE Master Web: http://127.0.0.1:${port}/`);
+ console.log(`EVE Wayfinder Web: http://127.0.0.1:${port}/`);
  const close=()=>{runtime.service.close();runtime.server.close(()=>process.exit(0));};process.once('SIGTERM',close);process.once('SIGINT',close);return runtime;
 }
 if(process.argv[1]&&import.meta.url===pathToFileURL(path.resolve(process.argv[1])).href)startWebServer().catch(e=>{console.error(e.code==='EADDRINUSE'?'端口已占用，请关闭现有服务或设置 PORT。':e.message);process.exitCode=1;});

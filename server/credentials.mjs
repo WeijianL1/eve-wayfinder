@@ -6,6 +6,7 @@ import path from 'node:path';
 // File encryption plus permissions prevents accidental plaintext disclosure, not a
 // compromise of the OS account holding both files. Production secret custody is separate.
 export function createCredentialStore(dataDir){
+ // Keep the v1 encryption AAD stable across rebrands so existing authorization decrypts.
  const file=path.join(dataDir,'authorization.enc'),keyFile=path.join(dataDir,'authorization.key');
  async function key(create=false){
   try{const bytes=await readFile(keyFile);if(bytes.length!==32)throw Error('Invalid credential key');return bytes;}
