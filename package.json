@@ -9,7 +9,7 @@
     "dev": "vite --host 127.0.0.1 --port 5173 --strictPort",
     "build": "tsc --noEmit && vite build",
     "preview": "node server/app.mjs",
-    "test": "node --experimental-strip-types --test tests/engine.test.ts tests/live-model.test.ts tests/service.test.mjs tests/transport.test.mjs tests/web-runtime.test.mjs tests/cache.test.ts tests/favorites.test.mjs tests/local-intel.test.mjs tests/pilot-risk.test.ts tests/native-capture.test.mjs tests/risk-alarm.test.ts tests/dev-security.test.mjs",
+    "test": "node --experimental-strip-types --test tests/engine.test.ts tests/live-model.test.ts tests/service.test.mjs tests/transport.test.mjs tests/web-runtime.test.mjs tests/cache.test.ts tests/favorites.test.mjs tests/local-intel.test.mjs tests/pilot-risk.test.ts tests/native-capture.test.mjs tests/risk-alarm.test.ts tests/dev-security.test.mjs tests/localization.test.ts",
     "test:ui": "playwright test",
     "test:live": "node scripts/smoke-live.mjs",
     "serve": "node server/app.mjs",
